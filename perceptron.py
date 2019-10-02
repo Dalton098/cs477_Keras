@@ -24,7 +24,6 @@ model.add(Dense(10, activation='linear', input_shape=(784,)))
 model.compile(loss = "mse", optimizer = SGD(lr = 0.01),
 metrics=['accuracy'])
 
-
 batch_size = 128
 epochs = 20
 
