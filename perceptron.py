@@ -12,6 +12,8 @@ x_test = x_test.reshape(10000, 784)
 x_train = x_train.astype('float32')
 x_test = x_test.astype('float32')
 
+x_train /= 255  
+
 num_classes = 10
 
 y_train = keras.utils.to_categorical(y_train, num_classes)
@@ -19,13 +21,13 @@ y_test = keras.utils.to_categorical(y_test, num_classes)
 
 model = Sequential()
 
-model.add(Dense(10, activation='linear', input_shape=(784,)))
+model.add(Dense(10, activation='softmax', input_shape=(784,)))
 
-model.compile(loss = "mse", optimizer = SGD(lr = 0.01),
+model.compile(loss = "msle", optimizer = SGD(lr = 0.1),
 metrics=['accuracy'])
 
-batch_size = 128
-epochs = 20
+batch_size = 32
+epochs = 50
 
 history = model.fit(x_train, y_train,
                 batch_size=batch_size,
