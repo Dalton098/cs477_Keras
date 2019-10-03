@@ -27,11 +27,7 @@ Data = Normalized, Activation = Linear, Batch size = 128, Epochs = 20, Learning 
 | **Hinge**         | 0.3486   | 0.9000    |
 | **Squared Hinge** | 0.3157   | 0.9000    |
 
-I ended up going with Mean Squared Logarithmic Error because it had the best accuracy while keeping the loss to a minimum.
-
-# Add info here ^
-
-
+I ended up going with Mean Squared Logarithmic Error because it had the best accuracy while keeping the loss to a minimum. This function is similar to MSE but you take the natural logarithm of the predicted values before calculating the MSE. This relaxes the punishment for large differences in large predicted values. It is best for non-normalized values however it still worked for these normalized values.
 
 ##### Activation
 
