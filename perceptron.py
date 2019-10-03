@@ -23,11 +23,13 @@ model = Sequential()
 
 model.add(Dense(10, activation='softmax', input_shape=(784,)))
 
+
 model.compile(loss = "msle", optimizer = SGD(lr = 0.1),
 metrics=['accuracy'])
 
 batch_size = 32
 epochs = 50
+
 
 history = model.fit(x_train, y_train,
                 batch_size=batch_size,
