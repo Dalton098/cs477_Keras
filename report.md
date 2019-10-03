@@ -40,7 +40,7 @@ Data = Normalized, Loss = MSLE, Batch size = 128, Epochs = 20, Learning Rate = 0
 | **Sigmoid** | 0.715        | 0.0172   |
 | **Tanh**    | 0.7296       | 0.0343   |
 
-Softmax ended up having the best performance. It had the highest accuracy and the lowest loss so I chose this function. The sigmoid function and tanh are roughly the same graph so I am not surprised they performed similarly. From what I found online it looked like softmax was useful in multiclass situations which this scenario is.
+Softmax ended up having the best performance. It had the highest accuracy and the lowest loss so I chose this function. The sigmoid function and tanh are roughly the same graph so I am not surprised they performed similarly. From what I found online it looked like softmax was useful in multi-class situations which this scenario is.
 
 ##### Batch Size
 
@@ -66,7 +66,7 @@ Data = Normalized, Loss = MSLE, Activation = Softmax, Batch Size = 32, Learning 
 | **30** | 0.9093   | 0.0087 |
 | **50** | 0.9095   | 0.0087 |
 
-Increasing the epochs increased the the overall performance as well. I settled on leaving epochs at 50. By increasing the epochs you are increasing the number of times the model is run through the data and each time it performed better.
+Increasing the epochs increased the the overall performance as well. I settled on leaving epochs at 50 since it was it did not run for too long but still gave good results. By increasing the epochs you are increasing the number of times the model is run through the data and each time it performed better.
 
 ##### Learning Rate
 
@@ -78,4 +78,4 @@ Data = Normalized, Loss = MSLE, Activation = Softmax, Batch Size = 32, Epochs 50
 | **0.1**  | 0.9104   | 0.0086 |
 | **0.5**  | 0.9059   | 0.0090 |
 
-The original learning rate was 0.01 but I changed it to 0.1 early on. I believe 0.01 did not make big enough changes to the weights but 0.5 adjusted the too much. I found 0.1 to be the best and ended up choosing it for my final model.
+The original learning rate was 0.01 but I changed it to 0.1 early on. I believe 0.01 did not make big enough changes to the weights but 0.5 adjusted the weights too much. I found 0.1 to be the best and ended up choosing it for my final model.
