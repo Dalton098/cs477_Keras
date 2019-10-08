@@ -40,7 +40,7 @@ history = model.fit(x_train, y_train,
                 validation_data=(x_test, y_test))
 score = model.evaluate(x_test, y_test, verbose=0)
 
-ann_viz(model)
+# ann_viz(model)
 # keras.utils.plot_model(model, to_file='model.png')
 
 
