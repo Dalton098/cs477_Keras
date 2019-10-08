@@ -9,8 +9,8 @@ from keras.layers import Dense
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 
 # Plots the first tensor in the MNIST data
-# plt.imshow(x_train[0], cmap=plt.get_cmap('gray'))
-# plt.show()
+plt.imshow(x_train[0], cmap=plt.get_cmap('gray'))
+plt.show()
 
 x_train = x_train.reshape(60000, 784)
 x_test = x_test.reshape(10000, 784)
@@ -33,7 +33,7 @@ model.compile(loss = "msle", optimizer = SGD(lr = 0.1),
 metrics=['accuracy'])
 
 batch_size = 32
-epochs = 5
+epochs = 50
 
 
 history = model.fit(x_train, y_train,
@@ -52,6 +52,4 @@ plt.plot(range(epochs), history_dict['loss'], label='Loss')
 plt.xlabel('Epoch')
 plt.ylabel('Performance')
 plt.legend()
-plt.savefig('test.png')
-
-
+plt.savefig('SGD.png')

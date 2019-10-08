@@ -70,7 +70,7 @@ Increasing the epochs increased the the overall performance as well. I settled o
 
 ##### Learning Rate
 
-Data = Normalized, Loss = MSLE, Activation = Softmax, Batch Size = 32, Epochs 50
+Data = Normalized, Loss = MSLE, Activation = Softmax, Batch Size = 32, Epochs = 50
 
 |          | Accuracy | Loss   |
 | -------- | -------- | ------ |
