@@ -24,10 +24,10 @@ y_test = keras.utils.to_categorical(y_test, num_classes)
 
 model = Sequential()
 
-model.add(Dense(10, activation='softmax', input_shape=(784,)))
-model.add(Dense(10, activation= 'softmax'))
+model.add(Dense(10, activation='relu', input_shape=(784,)))
+# model.add(Dense(10, activation= 'relu'))
 
-model.compile(loss = "binary_crossentropy", optimizer = SGD(lr = 0.1),
+model.compile(loss = "msle", optimizer = SGD(lr = 0.1),
 metrics=['categorical_accuracy'])
 
 batch_size = 32
