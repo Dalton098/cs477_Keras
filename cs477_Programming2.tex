@@ -1,0 +1,133 @@
+%%%%%%%% ICML 2019 EXAMPLE LATEX SUBMISSION FILE %%%%%%%%%%%%%%%%%
+
+\documentclass{article}
+
+% Recommended, but optional, packages for figures and better typesetting:
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{booktabs} % for professional tables
+
+% hyperref makes hyperlinks in the resulting PDF.
+% If your build breaks (sometimes temporarily if a hyperlink spans a page)
+% please comment out the following usepackage line and replace
+% \usepackage{icml2019} with \usepackage[nohyperref]{icml2019} above.
+\usepackage{hyperref}
+
+% Attempt to make hyperref and algorithmic work together better:
+\newcommand{\theHalgorithm}{\arabic{algorithm}}
+
+% Use the following line for the initial blind version submitted for review:
+\usepackage{icml2019}
+
+% If accepted, instead use the following line for the camera-ready submission:
+%\usepackage[accepted]{icml2019}
+
+% The \icmltitle you define below is probably too long as a header.
+% Therefore, a short form for the running title is supplied here:
+\icmltitlerunning{Naive Bayes Classification}
+
+\begin{document}
+
+\twocolumn[
+\icmltitle{Linear Perceptron Using the MNIST Data Set}
+
+\begin{center}
+    Dalton Rothenberger
+\end{center}
+
+
+% It is OKAY to include author information, even for blind
+% submissions: the style file will automatically remove it for you
+% unless you've provided the [accepted] option to the icml2019
+% package.
+
+% List of affiliations: The first argument should be a (short)
+% identifier you will use later to specify author affiliations
+% Academic affiliations should list Department, University, City, Region, Country
+% Industry affiliations should list Company, City, Region, Country
+
+% You can specify symbols, otherwise they are numbered in order.
+% Ideally, you should not use this facility. Affiliations will be numbered
+% in order of appearance and this is the preferred way.
+
+
+% You may provide any keywords that you
+% find helpful for describing your paper; these are used to populate
+% the "keywords" metadata in the PDF but will not be shown in the document
+\icmlkeywords{Machine Learning, ICML}
+
+\vskip 0.3in
+]
+
+% this must go after the closing bracket ] following \twocolumn[ ...
+
+% This command actually creates the footnote in the first column
+% listing the affiliations and the copyright notice.
+% The command takes one argument, which is text to display at the start of the footnote.
+% The \icmlEqualContribution command is standard text for equal contribution.
+% Remove it (just {}) if you do not need this facility.
+
+%\printAffiliationsAndNotice{}  % leave blank if no need to mention equal contribution
+ % otherwise use the standard text.
+
+
+
+\section{Data}
+
+Data = Normalized, Loss = Binary Cross Entropy, Activation = Softmax, Batch Size = 32, Epochs = 50, Learning Rate = 0.1
+\begin{table}[h!]
+  \begin{center}
+    \label{tab:table1}
+    \begin{tabular}{l|l|l} 
+      \textbf{Layers} & \textbf{Accuracy} & \textbf{Loss}\\
+      \hline
+      \textbf{Single Layer (10)} & 0.9248 & 0.0448\\
+      \textbf{2 Layers (Outer = 10, Middle = 5)} & 0.7553 & 0.1269\\
+      \textbf{2 Layers (Outer = 10, Middle = 3)} & 0.5605 & 0.2003\\
+      \textbf{2 Layers (Outer = 10, Middle = 10)} & 0.7478 & 0.1293\\
+    \end{tabular}
+  \end{center}
+\end{table}
+
+Data = Normalized, Loss = MSLE, Activation = ReLU, Batch Size = 32, Epochs = 50, Learning Rate = 0.1
+\begin{table}[h!]
+  \begin{center}
+    \label{tab:table1}
+    \begin{tabular}{l|l|l} 
+      \textbf{Layers} & \textbf{Accuracy} & \textbf{Loss}\\
+      \hline
+      \textbf{Single Layer (10)} & 0.9176 & 0.0081\\
+      \textbf{2 Layers (Outer = 10, Middle = 5)} & 0.7411 & 0.0163\\
+      \textbf{2 Layers (Outer = 10, Middle = 3)} & 0.6656 & 0.0235\\
+      \textbf{2 Layers (Outer = 10, Middle = 10)} & 0.8576 & 0.0099\\
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\section{Results and Analysis}
+\begin{enumerate}
+  \item My GitHub account is available
+\href{https://github.com/Dalton098}{here}
+  \item Normalizing the data provided a significant increase in accuracy. Normalizing the data alone increased my accuracy by roughly 80\%. The various activation functions produced varying results in term of accuracy. The Sigmoid function and Tanh function produced similar results which makes sense has they are relatively the same graph. The linear activation function produced the worst results of the functions I tried.
+  \item For a single layer perceptron, Softmax produced the best results. It had the highest accuracy and the lowest loss. In the final form of my single layer perceptron, Softmax produced an accuracy of 91.04\% and a loss of 0.0086.
+  \item The hidden layer architecture that worked best for me was using ReLU with MSLE as the loss function with 10 nodes in the outer layer and 10 nodes in the middle layer. Even though this was the best hidden layer architecture for me it still did not perform better than my single layer version. This was most likely the result of the model being overly complex for the data and not having any drop out introduced.
+  \item One way of approaching this would be to make multiple multi-class classifiers for each type of label. These classifiers would be separate from one another so the results of one would not influence the other. Based on the example we could have two multi-class classifiers that the input is run through. The first classifier would get the type of animal so "cat" in this instance. The other classifier would determine the action occurring so in this case "sleeping". These two outputs would be independent of each other and could be combined together to get the multi-label classification. A Softmax activation at the prediction layer would be appropriate for this approach. Softmax assigns decimal probabilities to each of the classes in a multi-class problem so a Softmax layer can be put on each of the multi-class classifiers. Softmax requires that each example has exactly one class and since the multiple labels are being broken up into multi-class classifiers that determine one label each this requirement is satisfied.
+\end{enumerate}
+
+
+
+\end{document}
+
+
+% This document was modified from the file originally made available by
+% Pat Langley and Andrea Danyluk for ICML-2K. This version was created
+% by Iain Murray in 2018, and modified by Alexandre Bouchard in
+% 2019. Previous contributors include Dan Roy, Lise Getoor and Tobias
+% Scheffer, which was slightly modified from the 2010 version by
+% Thorsten Joachims & Johannes Fuernkranz, slightly modified from the
+% 2009 version by Kiri Wagstaff and Sam Roweis's 2008 version, which is
+% slightly modified from Prasad Tadepalli's 2007 version which is a
+% lightly changed version of the previous year's version by Andrew
+% Moore, which was in turn edited from those of Kristian Kersting and
+% Codrina Lauth. Alex Smola contributed to the algorithmic style files.
